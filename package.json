@@ -1,0 +1,30 @@
+{
+	"name": "ubik",
+	"version": "0.0.1",
+	"description": "Modern CSS framework",
+	"keywords": [
+		"css",
+		"sass",
+		"responsive",
+		"framework"
+	],
+  	"author": {
+		"name": "Jose Cuesta",
+		"email": "jose.cuesta@inerciacreativa.com",
+		"url": "https://inerciacreativa.com"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/inerciacreativa/ubik.git"
+	},
+	"homepage": "https://github.com/inerciacreativa/ubik",
+	"bugs": "https://github.com/inerciacreativa/ubik/issues",
+	"main": "scss/ubik.scss",
+	"files": [
+		"scss",
+		"ubik.scss",
+		"LICENSE",
+		"README.md"
+	]
+}

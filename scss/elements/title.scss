@@ -1,0 +1,89 @@
+$title-color: $text-strong !default;
+$title-family: false !default;
+$title-size: $size-3 !default;
+$title-weight: $weight-bold !default;
+$title-line-height: 1.125 !default;
+$title-letter-spacing: normal !default;
+$title-strong-color: inherit !default;
+$title-strong-weight: inherit !default;
+$title-sub-size: .75em !default;
+$title-sup-size: .75em !default;
+
+$subtitle-color: $black !default;
+$subtitle-family: false !default;
+$subtitle-size: $size-5 !default;
+$subtitle-weight: $weight-bold !default;
+$subtitle-line: 1.25 !default;
+$subtitle-letter-spacing: normal !default;
+$subtitle-strong-color: $text-strong !default;
+$subtitle-strong-weight: $weight-semibold !default;
+$subtitle-negative-margin: -1.25rem !default;
+
+.title,
+.subtitle {
+	@extend %block;
+	word-break: break-word;
+
+	em,
+	span {
+		font-weight: inherit;
+	}
+
+	sub {
+		font-size: $title-sub-size;
+	}
+
+	sup {
+		font-size: $title-sup-size;
+	}
+
+	.tag {
+		vertical-align: middle;
+	}
+}
+
+.title {
+	color: $title-color;
+	@if $title-family {
+		font-family: $title-family;
+	}
+	font-size: $title-size;
+	font-weight: $title-weight;
+	@if $title-letter-spacing != normal {
+		letter-spacing: $title-letter-spacing;
+	}
+	line-height: $title-line-height;
+
+	strong {
+		color: $title-strong-color;
+		font-weight: $title-strong-weight;
+	}
+
+	+ .subtitle {
+		margin-top: $subtitle-negative-margin;
+	}
+}
+
+/* stylelint-disable no-descending-specificity */
+.subtitle {
+	color: $subtitle-color;
+	@if $subtitle-family {
+		font-family: $subtitle-family;
+	}
+	font-size: $subtitle-size;
+	font-weight: $subtitle-weight;
+	@if $subtitle-letter-spacing != normal {
+		letter-spacing: $subtitle-letter-spacing;
+	}
+	line-height: $subtitle-line;
+
+	strong {
+		color: $subtitle-strong-color;
+		font-weight: $subtitle-strong-weight;
+	}
+
+	+ .title {
+		margin-top: $subtitle-negative-margin;
+	}
+}
+/* stylelint-enable no-descending-specificity */

@@ -1,0 +1,89 @@
+/***** Animations ************************************************************* */
+
+@mixin animated-button($offset: -1px, $lighter: rgba($black, .1), $darker: rgba($black, .2)) {
+	transform: translateY(0);
+	transition: transform $speed $easing;
+	box-shadow: 0 3px 6px $lighter, 0 1px 3px $darker;
+
+	&:hover {
+		transform: translateY($offset);
+		box-shadow: 0 5px 10px $lighter, 0 2px 5px $darker;
+	}
+}
+
+@mixin sticky-widget($selector, $offset: -1rem, $speed: $speed) {
+	@include desktop {
+		transform: translateY(0);
+		transition: transform $speed $easing;
+		will-change: transform;
+
+		#{$selector} & {
+			transform: translateY($offset);
+		}
+	}
+}
+
+/***** Effects **************************************************************** */
+
+@mixin animation-block($background, $bottom: 0) {
+	content: " ";
+	display: block;
+	position: absolute;
+	right: 0;
+	left: 0;
+	bottom: $bottom;
+	background: $background;
+	will-change: all;
+}
+
+@mixin underline-from-center($color, $height: 2px, $bottom: 0) {
+	position: relative;
+
+	&::after {
+		@include animation-block($color, $bottom);
+		height: $height;
+		opacity: 0;
+		transform: scale(0);
+		transition: transform .4s, opacity .25s;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		&::after {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+}
+
+@mixin sweep-to-bottom($color, $background) {
+	position: relative;
+	overflow: hidden;
+
+	&::before {
+		content: " ";
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: -1px;
+		right: -1px;
+		bottom: 0;
+		background: $background;
+		transform: scaleY(0) translateZ(0);
+		transform-origin: 50% 0;
+		transition: transform .3s ease-out;
+		transition-timing-function: cubic-bezier(.52, 1.64, .37, .66);
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: $color;
+		background: transparent;
+
+		&::before {
+			transform: scaleY(1) translateZ(0);
+		}
+	}
+}

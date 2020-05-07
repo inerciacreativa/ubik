@@ -1,0 +1,11 @@
+%is-sr-only {
+	@include is-screen-reader;
+}
+
+.is-sr-only {
+	@extend %is-sr-only;
+}
+
+.is-hidden {
+	display: none;
+}

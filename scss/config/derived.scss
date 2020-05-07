@@ -1,0 +1,115 @@
+// Brand
+
+$primary: $blue !default;
+$secondary: $turquoise !default;
+$alternate: $orange !default;
+
+$info: $cyan !default;
+$success: $green !default;
+$warning: $yellow !default;
+$danger: $red !default;
+
+$light: $white-ter !default;
+$dark: $grey-darker !default;
+
+// Invert colors
+
+$orange-invert: color-invert($orange) !default;
+$yellow-invert: color-invert($yellow) !default;
+$green-invert: color-invert($green) !default;
+$turquoise-invert: color-invert($turquoise) !default;
+$cyan-invert: color-invert($cyan) !default;
+$blue-invert: color-invert($blue) !default;
+$purple-invert: color-invert($purple) !default;
+$red-invert: color-invert($red) !default;
+
+$primary-invert: color-invert($primary) !default;
+$primary-light: color-light($primary) !default;
+$primary-dark: color-dark($primary) !default;
+$secondary-invert: color-invert($secondary) !default;
+$secondary-light: color-light($secondary) !default;
+$secondary-dark: color-dark($secondary) !default;
+$alternate-invert: color-invert($alternate) !default;
+$alternate-light: color-light($alternate) !default;
+$alternate-dark: color-dark($alternate) !default;
+$info-invert: color-invert($info) !default;
+$info-light: color-light($info) !default;
+$info-dark: color-dark($info) !default;
+$success-invert: color-invert($success) !default;
+$success-light: color-light($success) !default;
+$success-dark: color-dark($success) !default;
+$warning-invert: color-invert($warning) !default;
+$warning-light: color-light($warning) !default;
+$warning-dark: color-dark($warning) !default;
+$danger-invert: color-invert($danger) !default;
+$danger-light: color-light($danger) !default;
+$danger-dark: color-dark($danger) !default;
+$light-invert: color-invert($light) !default;
+$dark-invert: color-invert($dark) !default;
+
+// General colors
+
+$background: $white-ter !default;
+
+$border: $grey-lighter !default;
+$border-hover: $grey-light !default;
+$border-light: $grey-lightest !default;
+$border-light-hover: $grey-light !default;
+
+// Text colors
+
+$text: $black-ter !default;
+$text-invert: color-invert($text) !default;
+$text-light: $grey !default;
+$text-strong: $grey-darker !default;
+
+// Code colors
+
+$code: $red !default;
+$code-background: $background !default;
+
+$pre: $text !default;
+$pre-background: $background !default;
+
+// Link colors
+
+$link: $blue !default;
+$link-invert: color-invert($link) !default;
+$link-light: color-light($link) !default;
+$link-dark: color-dark($link) !default;
+$link-visited: $purple !default;
+
+$link-hover: $cyan !default;
+$link-hover-border: $link-hover !default;
+
+$link-focus: $link-hover !default;
+$link-focus-border: $link-hover !default;
+
+$link-active: $link-hover !default;
+$link-active-border: $link-hover !default;
+
+// Typography
+
+$family-primary: $family-sans-serif !default;
+$family-secondary: $family-serif !default;
+$family-code: $family-monospace !default;
+
+$size-smallest: $size-8 !default;
+$size-small: $size-7 !default;
+$size-normal: $size-6 !default;
+$size-medium: $size-5 !default;
+$size-large: $size-4 !default;
+$size-largest: $size-3 !default;
+
+// Lists and maps
+
+//$colors: ("primary": ($primary, $primary-invert), "info": ($info, $info-invert), "success": ($success, $success-invert), "warning": ($warning, $warning-invert))
+//$shades: ("black-bis": $black-bis, "black-ter": $black-ter, "grey-darker": $grey-darker, "grey-dark": $grey-dark, "grey": $grey, "grey-light": $grey-light, "grey-lighter": $grey-lighter, "white-ter": $white-ter, "white-bis": $white-bis)
+
+$button-colors: ("primary": ($secondary, $primary-invert, $orange), "warning": ($warning, $warning-invert));
+$form-colors: () !default;
+$tag-colors: () !default;
+
+$sizes: $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 $size-7 $size-8 !default;
+$dimensions: 48 !default;
+$proportions: (1, 1), (4, 3), (16, 9) !default;

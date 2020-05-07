@@ -1,0 +1,319 @@
+$label-color: $grey-darker !default;
+$label-family: false !default;
+$label-size: $size-normal !default;
+$label-weight: $weight-medium !default;
+
+$help-size: $size-small !default;
+
+.label {
+	color: $label-color;
+	display: block;
+	@if $label-family {
+		font-family: $label-family;
+	}
+	font-size: $label-size;
+	font-weight: $label-weight;
+
+	&:not(:last-child) {
+		margin-bottom: .5em;
+	}
+
+	// Sizes
+	&.is-small {
+		font-size: $size-small;
+	}
+
+	&.is-medium {
+		font-size: $size-medium;
+	}
+
+	&.is-large {
+		font-size: $size-large;
+	}
+}
+
+.help {
+	display: block;
+	font-size: $help-size;
+	margin-top: .25rem;
+
+	@each $name, $pair in $form-colors {
+		$color: nth($pair, 1);
+
+		&.is-#{$name} {
+			color: $color;
+		}
+	}
+}
+
+// Containers
+
+.control {
+	box-sizing: border-box;
+	clear: both;
+	font-size: $size-normal;
+	position: relative;
+	text-align: left;
+
+	&.has-icons-left {
+		.input,
+		.select select {
+			padding-left: $input-height;
+		}
+
+		.icon.is-left {
+			left: 0;
+		}
+	}
+
+	&.has-icons-right {
+		.input,
+		.select select {
+			padding-right: $input-height;
+		}
+
+		.icon.is-right {
+			right: 0;
+		}
+	}
+
+	&.has-icons-left,
+	&.has-icons-right {
+		.icon {
+			color: $input-icon-color;
+			height: $input-height;
+			pointer-events: none;
+			position: absolute;
+			top: 0;
+			width: $input-height;
+			z-index: 4;
+		}
+
+		.input,
+		.select {
+			&:focus {
+				& ~ .icon {
+					color: $input-icon-active-color;
+				}
+			}
+
+			&.is-small ~ .icon {
+				font-size: $size-small;
+			}
+
+			&.is-medium ~ .icon {
+				font-size: $size-small;
+			}
+
+			&.is-large ~ .icon {
+				font-size: $size-small;
+			}
+		}
+	}
+}
+
+.field {
+	&:not(:last-child) {
+		margin-bottom: .75rem;
+	}
+
+	// Modifiers
+	&.has-addons {
+		display: flex;
+		justify-content: flex-start;
+
+		.control {
+			&:not(:last-child) {
+				margin-right: -1px;
+			}
+
+			&:first-child {
+				.button,
+				.input,
+				.select select {
+					border-bottom-right-radius: 0;
+					border-top-right-radius: 0;
+				}
+			}
+
+			&:last-child {
+				.button,
+				.input,
+				.select select {
+					border-bottom-left-radius: 0;
+					border-top-left-radius: 0;
+				}
+			}
+
+			&:not(:first-child):not(:last-child) {
+				.button,
+				.input,
+				.select select {
+					border-radius: 0;
+				}
+			}
+
+			/* stylelint-disable no-descending-specificity */
+			.button,
+			.input,
+			.select select {
+				&:hover,
+				&.is-hovered {
+					z-index: 2;
+				}
+
+				&:focus,
+				&.is-focused,
+				&:active,
+				&.is-active {
+					z-index: 3;
+
+					&:hover {
+						z-index: 4;
+					}
+				}
+			}
+
+			/* stylelint-enable */
+
+			&.is-expanded {
+				flex-grow: 1;
+			}
+		}
+
+		&.has-addons-centered {
+			justify-content: center;
+		}
+
+		&.has-addons-right {
+			justify-content: flex-end;
+		}
+
+		&.has-addons-fullwidth {
+			/* stylelint-disable no-descending-specificity */
+			.control {
+				flex-grow: 1;
+				flex-shrink: 0;
+			}
+
+			/* stylelint-enable */
+		}
+	}
+
+	/* stylelint-disable no-descending-specificity */
+	&.is-grouped {
+		display: flex;
+		justify-content: flex-start;
+
+		& > .control {
+			flex-shrink: 0;
+
+			&:not(:last-child) {
+				margin-bottom: 0;
+				margin-right: .75rem;
+			}
+
+			&.is-expanded {
+				flex-grow: 1;
+				flex-shrink: 1;
+			}
+		}
+
+		&.is-grouped-centered {
+			justify-content: center;
+		}
+
+		&.is-grouped-right {
+			justify-content: flex-end;
+		}
+
+		&.is-grouped-multiline {
+			flex-wrap: wrap;
+
+			& > .control {
+				&:last-child,
+				&:not(:last-child) {
+					margin-bottom: .75rem;
+				}
+			}
+
+			&:last-child {
+				margin-bottom: -.75rem;
+			}
+
+			&:not(:last-child) {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	/* stylelint-enable */
+
+	&.is-horizontal {
+		@include tablet {
+			display: flex;
+		}
+	}
+}
+
+.field-label {
+	.label {
+		font-size: inherit;
+	}
+
+	@include mobile {
+		margin-bottom: .5rem;
+	}
+
+	@include tablet {
+		flex: 1 0 0;
+		margin-right: 1.5rem;
+		text-align: right;
+
+		&.is-small {
+			font-size: $size-small;
+			padding-top: .375em;
+		}
+
+		&.is-normal {
+			padding-top: .375em;
+		}
+
+		&.is-medium {
+			font-size: $size-medium;
+			padding-top: .375em;
+		}
+
+		&.is-large {
+			font-size: $size-large;
+			padding-top: .375em;
+		}
+	}
+}
+
+.field-body {
+	.field .field {
+		margin-bottom: 0;
+	}
+
+	@include tablet {
+		display: flex;
+		flex: 5 1 0;
+
+		.field {
+			margin-bottom: 0;
+		}
+
+		& > .field {
+			flex-shrink: 1;
+
+			&:not(.is-narrow) {
+				flex-grow: 1;
+			}
+
+			&:not(:last-child) {
+				margin-right: .75rem;
+			}
+		}
+	}
+}

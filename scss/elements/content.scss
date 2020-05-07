@@ -1,0 +1,244 @@
+$content-heading-color: $text-strong !default;
+$content-heading-weight: $weight-normal !default;
+$content-heading-line-height: 1.125 !default;
+
+$content-heading-size-1: 2em !default;
+$content-heading-size-2: 1.75em !default;
+$content-heading-size-3: 1.5em !default;
+$content-heading-size-4: 1.25em !default;
+$content-heading-size-5: 1.125em !default;
+$content-heading-size-6: 1em !default;
+
+$content-block-margin: $body-line-height * 1em !default;
+$content-line-height: $body-line-height !default;
+
+$content-blockquote-background-color: $white-bis !default;
+$content-blockquote-border-left: 5px solid $border !default;
+$content-blockquote-padding: 1.25em 1.5em !default;
+
+$content-pre-padding: 1.25em 1.5em !default;
+
+$content-table-cell-border: 1px solid $border !default;
+$content-table-cell-border-width: 0 0 1px !default;
+$content-table-cell-padding: .5em .75em !default;
+$content-table-cell-heading-color: $text-strong !default;
+$content-table-row-hover-background-color: $background !default;
+$content-table-head-cell-border-width: 0 0 2px !default;
+$content-table-head-cell-color: $text-strong !default;
+$content-table-foot-cell-border-width: 2px 0 0 !default;
+$content-table-foot-cell-color: $text-strong !default;
+
+@mixin content {
+	// Inline
+	a {
+		&:hover,
+		&:focus {
+			text-decoration: underline;
+		}
+	}
+
+	li + li {
+		margin-top: .25em;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: $content-heading-color;
+		font-weight: $content-heading-weight;
+		line-height: $content-heading-line-height;
+	}
+
+	h1 {
+		font-size: $content-heading-size-1;
+		margin-bottom: .5em;
+
+		&:not(:first-child) {
+			margin-top: 1em;
+		}
+	}
+
+	h2 {
+		font-size: $content-heading-size-2;
+		margin-bottom: relative-size(16, $content-heading-size-2) + em;
+
+		&:not(:first-child) {
+			margin-top: relative-size(32, $content-heading-size-2) + em;
+		}
+	}
+
+	h3 {
+		font-size: $content-heading-size-3;
+		margin-bottom: relative-size(16, $content-heading-size-3) + em;
+
+		&:not(:first-child) {
+			margin-top: relative-size(32, $content-heading-size-3) + em;
+		}
+	}
+
+	h4 {
+		font-size: $content-heading-size-4;
+		margin-bottom: relative-size(16, $content-heading-size-4) + em;
+	}
+
+	h5 {
+		font-size: $content-heading-size-5;
+		margin-bottom: relative-size(16, $content-heading-size-5) + em;
+	}
+
+	h6 {
+		font-size: $content-heading-size-6;
+		margin-bottom: relative-size(16, $content-heading-size-6) + em;
+	}
+
+	blockquote {
+		background-color: $content-blockquote-background-color;
+		border-left: $content-blockquote-border-left;
+		padding: $content-blockquote-padding;
+		font-style: italic;
+	}
+
+	ol {
+		list-style: decimal outside;
+		margin-left: 2em;
+		margin-top: $content-block-margin;
+	}
+
+	ul {
+		list-style: disc outside;
+		margin-left: 2em;
+		margin-top: $content-block-margin;
+
+		ul {
+			list-style-type: circle;
+			margin-top: $content-block-margin / 2;
+
+			ul {
+				list-style-type: square;
+			}
+		}
+	}
+
+	dd {
+		margin-left: 2em;
+	}
+
+	img.aligncenter {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	figure {
+		margin: 0 0 2em;
+		text-align: center;
+
+		&:not(:first-child) {
+			margin-top: 2em;
+		}
+
+		img {
+			display: inline-block;
+		}
+
+		figcaption {
+			font-style: italic;
+		}
+	}
+
+	pre {
+		@include overflow-touch;
+		overflow-x: auto;
+		padding: $content-pre-padding;
+		white-space: pre;
+		word-wrap: normal;
+	}
+
+	sup,
+	sub {
+		font-size: 75%;
+	}
+
+	table {
+		width: 100%;
+
+		td,
+		th {
+			border: $content-table-cell-border;
+			border-width: $content-table-cell-border-width;
+			padding: $content-table-cell-padding;
+			vertical-align: top;
+		}
+
+		th {
+			color: $content-table-cell-heading-color;
+			text-align: left;
+		}
+
+		thead {
+			td,
+			th {
+				border-width: $content-table-head-cell-border-width;
+				color: $content-table-head-cell-color;
+			}
+		}
+
+		tfoot {
+			td,
+			th {
+				border-width: $content-table-foot-cell-border-width;
+				color: $content-table-foot-cell-color;
+			}
+		}
+
+		tbody {
+			tr {
+				&:last-child {
+					td,
+					th {
+						border-bottom-width: 0;
+					}
+				}
+
+				&:hover {
+					background-color: $content-table-row-hover-background-color;
+				}
+			}
+		}
+	}
+
+	/* stylelint-disable no-descending-specificity */
+	p,
+	dl,
+	ol,
+	ul,
+	blockquote,
+	pre,
+	table {
+		&:not(:last-child) {
+			margin-bottom: $content-block-margin;
+		}
+	}
+
+	/* stylelint-enable */
+
+	// Sizes
+	&.is-small {
+		font-size: $size-small;
+	}
+
+	&.is-medium {
+		font-size: $size-medium;
+	}
+
+	&.is-large {
+		font-size: $size-large;
+	}
+}
+
+%content {
+	@include content;
+}

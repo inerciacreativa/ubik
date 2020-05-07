@@ -1,0 +1,49 @@
+$dimensions: 16 24 32 48 64 96 128 !default;
+$proportions: (3, 1), (2, 1), (16, 9), (5, 3), (3, 2), (4, 3), (5, 4), (1, 1), (4, 5), (3, 4), (2, 3), (3, 5), (9, 16), (1, 2), (1, 3) !default;
+
+$selectors: ();
+
+@each $proportion in $proportions {
+	$width: nth($proportion, 1);
+	$height: nth($proportion, 2);
+	$selectors: append($selectors, unquote("&.is-#{$width}by#{$height}"), "comma");
+}
+
+.image {
+	display: block;
+	position: relative;
+
+	img {
+		display: block;
+		height: auto;
+		width: 100%;
+
+		&.is-rounded {
+			border-radius: $radius-rounded;
+		}
+	}
+
+	#{$selectors} {
+		img {
+			@extend %overlay;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	@each $proportion in $proportions {
+		$width: nth($proportion, 1);
+		$height: nth($proportion, 2);
+
+		&.is-#{$width}by#{$height} {
+			padding-top: $height / $width * 100%;
+		}
+	}
+
+	@each $dimension in $dimensions {
+		&.is-#{$dimension}x#{$dimension} {
+			height: $dimension * 1px;
+			width: $dimension * 1px;
+		}
+	}
+}
