@@ -1,3 +1,6 @@
+$content-family: false !default;
+
+$content-heading-family: false !default;
 $content-heading-color: $text-strong !default;
 $content-heading-weight: $weight-normal !default;
 $content-heading-line-height: 1.125 !default;
@@ -29,7 +32,10 @@ $content-table-foot-cell-border-width: 2px 0 0 !default;
 $content-table-foot-cell-color: $text-strong !default;
 
 @mixin content {
-	// Inline
+	@if $content-family {
+		font-family: $content-family;
+	}
+
 	a {
 		&:hover,
 		&:focus {
@@ -48,6 +54,9 @@ $content-table-foot-cell-color: $text-strong !default;
 	h5,
 	h6 {
 		color: $content-heading-color;
+		@if $content-heading-family {
+			font-family: $content-heading-family;
+		}
 		font-weight: $content-heading-weight;
 		line-height: $content-heading-line-height;
 	}
@@ -225,7 +234,6 @@ $content-table-foot-cell-color: $text-strong !default;
 
 	/* stylelint-enable */
 
-	// Sizes
 	&.is-small {
 		font-size: $size-small;
 	}
