@@ -1,6 +1,9 @@
 $tag-background-color: $background !default;
 $tag-color: $text !default;
+$tag-height: 2em;
+$tag-padding: .75em;
 $tag-radius: $radius !default;
+$tag-margin: .25rem;
 
 .tag:not(body) {
 	align-items: center;
@@ -9,11 +12,11 @@ $tag-radius: $radius !default;
 	color: $tag-color;
 	display: inline-flex;
 	font-size: $size-small;
-	height: 2em;
+	height: $tag-height;
 	justify-content: center;
-	line-height: 1.5;
-	padding-left: .75em;
-	padding-right: .75em;
+	line-height: 1;
+	padding-left: $tag-padding;
+	padding-right: $tag-padding;
 	white-space: nowrap;
 
 	// Colors
@@ -75,15 +78,15 @@ a.tag {
 	justify-content: flex-start;
 
 	.tag {
-		margin-bottom: .5rem;
+		margin-bottom: $tag-margin;
 
 		&:not(:last-child) {
-			margin-right: .5rem;
+			margin-right: $tag-margin;
 		}
 	}
 
 	&:last-child {
-		margin-bottom: -.5rem;
+		margin-bottom: -$tag-margin;
 	}
 
 	&:not(:last-child) {
@@ -94,8 +97,8 @@ a.tag {
 		justify-content: center;
 
 		.tag {
-			margin-right: .25rem;
-			margin-left: .25rem;
+			margin-right: $tag-margin / 2;
+			margin-left: $tag-margin / 2;
 		}
 	}
 
@@ -104,7 +107,7 @@ a.tag {
 
 		.tag {
 			&:not(:first-child) {
-				margin-left: .5rem;
+				margin-left: $tag-margin;
 			}
 
 			&:not(:last-child) {
