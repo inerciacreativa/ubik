@@ -103,10 +103,7 @@ $size-largest: $size-3 !default;
 
 // Lists and maps
 
-//$colors: ("primary": ($primary, $primary-invert), "info": ($info, $info-invert), "success": ($success, $success-invert), "warning": ($warning, $warning-invert))
-//$shades: ("black-bis": $black-bis, "black-ter": $black-ter, "grey-darker": $grey-darker, "grey-dark": $grey-dark, "grey": $grey, "grey-light": $grey-light, "grey-lighter": $grey-lighter, "white-ter": $white-ter, "white-bis": $white-bis)
-
-$button-colors: ("primary": ($secondary, $primary-invert, $orange), "warning": ($warning, $warning-invert));
+$button-colors: ("primary": ($primary, $primary-invert), "info": ($info, $info-invert), "success": ($success, $success-invert), "warning": ($warning, $warning-invert)) !default;
 $form-colors: () !default;
 $tag-colors: () !default;
 
