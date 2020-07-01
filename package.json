@@ -28,14 +28,14 @@
 		"README.md"
 	],
 	"devDependencies": {
-		"autoprefixer": "^9.7.6",
+		"autoprefixer": "^9.8.4",
 		"clean-css-cli": "^4.3.0",
 		"node-sass": "^4.14.1",
 		"postcss-cli": "^7.1.1",
 		"rimraf": "^3.0.2",
-		"stylelint": "^13.3.3",
+		"stylelint": "^13.6.1",
 		"stylelint-config-standard": "^20.0.0",
-		"stylelint-scss": "^3.17.2"
+		"stylelint-scss": "^3.18.0"
 	},
 	"scripts": {
 		"lint": "stylelint 'scss/**/*.scss'",
