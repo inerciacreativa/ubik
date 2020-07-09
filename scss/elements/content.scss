@@ -15,6 +15,8 @@ $content-heading-size-6: 1em !default;
 $content-block-margin: $body-line-height * 1em !default;
 $content-line-height: $body-line-height !default;
 
+$content-figcaption-size: .85em;
+
 $content-blockquote-background-color: $white-bis !default;
 $content-blockquote-border-left: 5px solid $border !default;
 $content-blockquote-padding: 1.25em 1.5em !default;
@@ -154,6 +156,7 @@ $content-table-foot-cell-color: $text-strong !default;
 		}
 
 		figcaption {
+			font-size: $content-figcaption-size;
 			font-style: italic;
 		}
 	}
