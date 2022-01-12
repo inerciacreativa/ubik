@@ -4,29 +4,22 @@ $pager-background-color: transparent;
 $pager-family: false !default;
 $pager-font-size: $size-normal !default;
 $pager-margin: -.25rem !default;
-
 $pager-item-margin: .25em !default;
 $pager-item-width: 2.5em !default;
-
 $pager-next-prev-width: 6em !default;
 $pager-next-prev-padding: .75em !default;
-
 $pager-hover-color: $link-hover !default;
 $pager-hover-background-color: transparent !default;
 $pager-hover-border-color: $link-hover-border !default;
-
 $pager-focus-color: $link-focus !default;
 $pager-focus-background-color: transparent !default;
 $pager-focus-border-color: $link-focus-border !default;
-
 $pager-disabled-color: $grey !default;
 $pager-disabled-background-color: $grey-lighter !default;
 $pager-disabled-border-color: $grey-lighter !default;
-
 $pager-current-color: $link-invert !default;
 $pager-current-background-color: $link !default;
 $pager-current-border-color: $link !default;
-
 $pager-ellipsis-color: $grey-light !default;
 
 .pager {

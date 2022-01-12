@@ -1,12 +1,31 @@
-$dimensions: 16 24 32 48 64 96 128 !default;
-$proportions: (3, 1), (2, 1), (16, 9), (5, 3), (3, 2), (4, 3), (5, 4), (1, 1), (4, 5), (3, 4), (2, 3), (3, 5), (9, 16), (1, 2), (1, 3) !default;
+@use "sass:list";
+@use "sass:math";
+@use "sass:string";
 
+$dimensions: 16 24 32 48 64 96 128 !default;
+$proportions: (3, 1),
+	(2, 1),
+	(16, 9),
+	(5, 3),
+	(3, 2),
+	(4, 3),
+	(5, 4),
+	(1, 1),
+	(4, 5),
+	(3, 4),
+	(2, 3),
+	(3, 5),
+	(9, 16),
+	(1, 2),
+	(1, 3) !default;
+
+// List
 $selectors: ();
 
 @each $proportion in $proportions {
-	$width: nth($proportion, 1);
-	$height: nth($proportion, 2);
-	$selectors: append($selectors, unquote("&.is-#{$width}by#{$height}"), "comma");
+	$width: list.nth($proportion, 1);
+	$height: list.nth($proportion, 2);
+	$selectors: list.append($selectors, string.unquote("&.is-#{$width}by#{$height}"), "comma");
 }
 
 .image {
@@ -32,11 +51,11 @@ $selectors: ();
 	}
 
 	@each $proportion in $proportions {
-		$width: nth($proportion, 1);
-		$height: nth($proportion, 2);
+		$width: list.nth($proportion, 1);
+		$height: list.nth($proportion, 2);
 
 		&.is-#{$width}by#{$height} {
-			padding-top: $height / $width * 100%;
+			padding-top: math.div($height, $width) * 100%;
 		}
 	}
 

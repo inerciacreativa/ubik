@@ -41,8 +41,7 @@
 	@if $height != 0 {
 		left: calc(50% - (#{$width} / 2));
 		top: calc(50% - (#{$height} / 2));
-	}
-	@else {
+	} @else {
 		left: calc(50% - (#{$width} / 2));
 		top: calc(50% - (#{$width} / 2));
 	}
@@ -83,7 +82,7 @@
 	@include overlay;
 }
 
-//noinspection CssInvalidPseudoSelector
+// noinspection CssInvalidPseudoSelector
 @mixin placeholder {
 	$placeholders: ":-moz" ":-webkit-input" "-moz" "-ms-input";
 
@@ -94,16 +93,8 @@
 	}
 }
 
-@mixin unselectable {
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-
 %unselectable {
-	@include unselectable;
+	user-select: none;
 }
 
 @mixin arrow($color: transparent) {

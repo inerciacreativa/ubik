@@ -1,6 +1,6 @@
 {
 	"name": "ubik",
-	"version": "0.0.7",
+	"version": "0.1.0",
 	"description": "Modern CSS framework",
 	"keywords": [
 		"css",
@@ -27,21 +27,26 @@
 		"LICENSE",
 		"README.md"
 	],
+	"peerDependencies": {
+		"sass": "^1.33.0"
+	},
 	"devDependencies": {
-		"autoprefixer": "^9.8.4",
-		"clean-css-cli": "^4.3.0",
-		"node-sass": "^4.14.1",
-		"postcss-cli": "^7.1.1",
+		"autoprefixer": "^10.4.2",
+		"clean-css-cli": "^5.5.0",
+		"postcss": "^8.4.5",
+		"postcss-cli": "^9.1.0",
 		"rimraf": "^3.0.2",
-		"stylelint": "^13.6.1",
-		"stylelint-config-standard": "^20.0.0",
-		"stylelint-scss": "^3.18.0"
+		"sass": "^1.47.0",
+		"stylelint": "^14.2.0",
+		"stylelint-config-standard": "^24.0.0",
+		"stylelint-config-standard-scss": "3.0.0",
+		"stylelint-scss": "^4.1.0"
 	},
 	"scripts": {
 		"lint": "stylelint 'scss/**/*.scss'",
 		"build": "npm run build-clean && npm run build-sass && npm run build-autoprefix && npm run build-cleancss",
 		"build-clean": "rimraf css",
-		"build-sass": "node-sass --output-style expanded --source-map true scss/ubik.scss css/ubik.css",
+		"build-sass": "sass scss/ubik.scss css/ubik.css",
 		"build-autoprefix": "postcss --use autoprefixer --map false --output css/ubik.css css/ubik.css",
 		"build-cleancss": "cleancss -o css/ubik.min.css css/ubik.css",
 		"deploy": "npm run build",

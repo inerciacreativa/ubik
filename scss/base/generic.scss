@@ -1,35 +1,41 @@
-$body-background-color: $white !default;
-$body-size: $size-base !default;
+// Layout
 $body-min-width: 300px !default;
 $body-rendering: optimizeLegibility !default;
 $body-overflow-x: hidden !default;
 $body-overflow-y: scroll !default;
 
+// Colors
 $body-color: $text !default;
+$body-background-color: $white !default;
+
+// Typography
+$body-size: $size-base !default;
 $body-font-size: 1em !default;
 $body-weight: $weight-normal !default;
 $body-line-height: 1.5 !default;
-
 $body-family: $family-primary !default;
 $form-family: $family-primary !default;
 $code-family: $family-code !default;
+$small-font-size: .875em !default;
 
+// Code blocks
 $code-padding: .25em .5em .25em !default;
 $code-weight: normal !default;
 $code-size: .875em !default;
 
-$small-font-size: .875em !default;
+// Pre
+$pre-font-size: .875em !default;
+$pre-padding: 1.25rem 1.5rem !default;
+$pre-code-font-size: 1em !default;
 
+// Horizontal rule
 $hr-background-color: $border !default;
 $hr-height: 1px !default;
 $hr-margin: 1.5rem 0 !default;
 
+// Strong
 $strong-color: $text-strong !default;
 $strong-weight: $weight-bold !default;
-
-$pre-font-size: .875em !default;
-$pre-padding: 1.25rem 1.5rem !default;
-$pre-code-font-size: 1em !default;
 
 html {
 	background-color: $body-background-color;

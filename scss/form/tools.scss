@@ -1,8 +1,9 @@
+@use "sass:list";
+
 $label-color: $grey-darker !default;
 $label-family: false !default;
 $label-size: $size-normal !default;
 $label-weight: $weight-medium !default;
-
 $help-size: $size-small !default;
 
 .label {
@@ -38,7 +39,7 @@ $help-size: $size-small !default;
 	margin-top: .25rem;
 
 	@each $name, $pair in $form-colors {
-		$color: nth($pair, 1);
+		$color: list.nth($pair, 1);
 
 		&.is-#{$name} {
 			color: $color;

@@ -1,11 +1,12 @@
+@use "sass:color";
+@use "sass:list";
+
 $file-border-color: $border !default;
 $file-radius: $radius !default;
-
 $file-cta-background-color: $white-ter !default;
 $file-cta-color: $grey-dark !default;
 $file-cta-hover-color: $grey-darker !default;
 $file-cta-active-color: $grey-darker !default;
-
 $file-name-border-color: $border !default;
 $file-name-border-style: solid !default;
 $file-name-border-width: 1px 1px 1px 0 !default;
@@ -67,23 +68,23 @@ $file-name-max-width: 16em !default;
 
 	&:hover {
 		.file-cta {
-			background-color: darken($file-cta-background-color, 2.5%);
+			background-color: color.adjust($file-cta-background-color, $lightness: -2.5%);
 			color: $file-cta-hover-color;
 		}
 
 		.file-name {
-			border-color: darken($file-name-border-color, 2.5%);
+			border-color: color.adjust($file-name-border-color, $lightness: -2.5%);
 		}
 	}
 
 	&:active {
 		.file-cta {
-			background-color: darken($file-cta-background-color, 5%);
+			background-color: color.adjust($file-cta-background-color, $lightness: -5%);
 			color: $file-cta-active-color;
 		}
 
 		.file-name {
-			border-color: darken($file-name-border-color, 5%);
+			border-color: color.adjust($file-name-border-color, $lightness: -5%);
 		}
 	}
 }
@@ -97,8 +98,8 @@ $file-name-max-width: 16em !default;
 
 	// Colors
 	@each $name, $pair in $form-colors {
-		$color: nth($pair, 1);
-		$color-invert: nth($pair, 2);
+		$color: list.nth($pair, 1);
+		$color-invert: list.nth($pair, 2);
 
 		&.is-#{$name} {
 			.file-cta {
@@ -110,7 +111,7 @@ $file-name-max-width: 16em !default;
 			&:hover,
 			&.is-hovered {
 				.file-cta {
-					background-color: darken($color, 2.5%);
+					background-color: color.adjust($color, $lightness: -2.5%);
 					border-color: transparent;
 					color: $color-invert;
 				}
@@ -128,7 +129,7 @@ $file-name-max-width: 16em !default;
 			&:active,
 			&.is-active {
 				.file-cta {
-					background-color: darken($color, 5%);
+					background-color: color.adjust($color, $lightness: -5%);
 					border-color: transparent;
 					color: $color-invert;
 				}

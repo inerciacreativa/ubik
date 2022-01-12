@@ -1,19 +1,15 @@
 // Brand
-
 $primary: $blue !default;
 $secondary: $turquoise !default;
 $alternate: $orange !default;
-
 $info: $cyan !default;
 $success: $green !default;
 $warning: $yellow !default;
 $danger: $red !default;
-
 $light: $white-ter !default;
 $dark: $grey-darker !default;
 
-// Invert colors
-
+// Inverted colors
 $orange-invert: color-invert($orange) !default;
 $yellow-invert: color-invert($yellow) !default;
 $green-invert: color-invert($green) !default;
@@ -23,6 +19,7 @@ $blue-invert: color-invert($blue) !default;
 $purple-invert: color-invert($purple) !default;
 $red-invert: color-invert($red) !default;
 
+// Variations
 $primary-invert: color-invert($primary) !default;
 $primary-light: color-light($primary) !default;
 $primary-dark: color-dark($primary) !default;
@@ -47,53 +44,46 @@ $danger-dark: color-dark($danger) !default;
 $light-invert: color-invert($light) !default;
 $dark-invert: color-invert($dark) !default;
 
-// General colors
-
+// Background
 $background: $white-ter !default;
 
+// Borders
 $border: $grey-lighter !default;
 $border-hover: $grey-light !default;
 $border-light: $grey-lightest !default;
 $border-light-hover: $grey-light !default;
 
 // Text colors
-
 $text: $black-ter !default;
 $text-invert: color-invert($text) !default;
 $text-light: $grey !default;
 $text-strong: $grey-darker !default;
 
 // Code colors
-
 $code: $red !default;
 $code-background: $background !default;
-
 $pre: $text !default;
 $pre-background: $background !default;
 
 // Link colors
-
 $link: $blue !default;
 $link-invert: color-invert($link) !default;
 $link-light: color-light($link) !default;
 $link-dark: color-dark($link) !default;
 $link-visited: $purple !default;
-
 $link-hover: $cyan !default;
 $link-hover-border: $link-hover !default;
-
 $link-focus: $link-hover !default;
 $link-focus-border: $link-hover !default;
-
 $link-active: $link-hover !default;
 $link-active-border: $link-hover !default;
 
-// Typography
-
+// Font families
 $family-primary: $family-sans-serif !default;
 $family-secondary: $family-serif !default;
 $family-code: $family-monospace !default;
 
+// Font sizes
 $size-smallest: $size-8 !default;
 $size-small: $size-7 !default;
 $size-normal: $size-6 !default;
@@ -102,11 +92,10 @@ $size-large: $size-4 !default;
 $size-largest: $size-3 !default;
 
 // Lists and maps
-
+/* stylelint-disable max-line-length */
 $button-colors: ("primary": ($primary, $primary-invert), "info": ($info, $info-invert), "success": ($success, $success-invert), "warning": ($warning, $warning-invert)) !default;
 $form-colors: () !default;
 $tag-colors: () !default;
-
 $sizes: $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 $size-7 $size-8 !default;
 $dimensions: 48 !default;
 $proportions: (1, 1), (4, 3), (16, 9) !default;

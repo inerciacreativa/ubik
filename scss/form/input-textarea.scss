@@ -1,3 +1,5 @@
+@use "sass:list";
+
 $textarea-padding: $control-padding-horizontal !default;
 $textarea-max-height: 40em !default;
 $textarea-min-height: 8em !default;
@@ -16,7 +18,7 @@ $textarea-min-height: 8em !default;
 
 	// Colors
 	@each $name, $pair in $form-colors {
-		$color: nth($pair, 1);
+		$color: list.nth($pair, 1);
 
 		&.is-#{$name} {
 			border-color: $color;

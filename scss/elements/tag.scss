@@ -1,3 +1,5 @@
+@use "sass:list";
+
 $tag-background-color: $background !default;
 $tag-color: $text !default;
 $tag-height: 2em;
@@ -21,8 +23,8 @@ $tag-margin: .25rem;
 
 	// Colors
 	@each $name, $pair in $tag-colors {
-		$color: nth($pair, 1);
-		$color-invert: nth($pair, 2);
+		$color: list.nth($pair, 1);
+		$color-invert: list.nth($pair, 2);
 
 		&.is-#{$name} {
 			background-color: $color;
@@ -97,8 +99,8 @@ a.tag {
 		justify-content: center;
 
 		.tag {
-			margin-right: $tag-margin / 2;
-			margin-left: $tag-margin / 2;
+			margin-right: calc(#{$tag-margin} / 2);
+			margin-left: calc(#{$tag-margin} / 2);
 		}
 	}
 
@@ -144,6 +146,5 @@ a.tag {
 			}
 		}
 	}
-
 	/* stylelint-enable */
 }

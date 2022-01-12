@@ -1,10 +1,15 @@
+@use "sass:color";
+@use "sass:map";
+@use "sass:math";
+@use "sass:string";
+
 /// Remove the unit of a length
 /// @param {Number} $number - Number to remove unit from
 /// @return {Number} - Unitless number
 
 @function strip-unit($number) {
 	@if type-of($number) == "number" and not unitless($number) {
-		@return $number / ($number * 0 + 1);
+		@return math.div($number, ($number * 0 + 1));
 	}
 
 	@return $number;
@@ -17,10 +22,9 @@
 		@for $i from 1 through $exp {
 			$value: $value * $number;
 		}
-	}
-	@else if $exp < 0 {
-		@for $i from 1 through -$exp {
-			$value: $value / $number;
+	} @else if $exp < 0 {
+		@for $i from 1 through - $exp {
+			$value: math.div($value, $number);
 		}
 	}
 
@@ -28,44 +32,43 @@
 }
 
 @function color-luminance($color) {
-	$color-rgb: ("red": red($color), "green": green($color), "blue": blue($color));
+	$rgb: ("red": color.red($color), "green": color.green($color), "blue": color.blue($color));
 
-	@each $name, $value in $color-rgb {
+	@each $name, $value in $rgb {
 		$adjusted: 0;
-		$value: $value / 255;
+		$value: math.div($value, 255);
 
 		@if $value < .03928 {
-			$value: $value / 12.92;
-		}
-		@else {
-			$value: ($value + .055) / 1.055;
+			$value: math.div($value, 12.92);
+		} @else {
+			$value: math.div($value + .055, 1.055);
 			$value: power-number($value, 2);
 		}
 
-		$color-rgb: map-merge($color-rgb, ($name: $value));
+		$rgb: map.merge($rgb, ($name: $value));
 	}
 
-	@return map-get($color-rgb, "red") * .2126 + map-get($color-rgb, "green") * .7152 + map-get($color-rgb, "blue") * .0722;
+	@return map.get($rgb, "red") * .2126 + map.get($rgb, "green") * .7152 + map.get($rgb, "blue") * .0722;
 }
 
 @function color-invert($color) {
 	@if color-luminance($color) > .55 {
 		@return rgba(#000, .7);
-	}
-	@else {
+	} @else {
 		@return #fff;
 	}
 }
 
 @function color-light($color) {
 	@if type_of($color) != color {
-		@warn '#{$color} is not a color';
+		@warn "#{$color} is not a color";
 		@return $background;
 	}
 
 	$target: 96%;
+
 	@if lightness($color) > 96% {
-		$target: lightness($color);
+		$target: color.lightness($color);
 	}
 
 	@return change_color($color, $lightness: $target);
@@ -73,21 +76,21 @@
 
 @function color-dark($color) {
 	@if type_of($color) != color {
-		@warn '#{$color} is not a color';
+		@warn "#{$color} is not a color";
 		@return $text-strong;
 	}
 
 	$base: 29%;
 	$luminance: color-luminance($color);
 	$delta: (.53 - $luminance);
-	$target: round($base + ($delta * 53));
+	$target: math.round($base + ($delta * 53));
 
 	@return change_color($color, $lightness: max($base, $target));
 }
 
 @function color-rgba($color, $alpha) {
 	@if type_of($color) != color {
-		@warn '#{$color} is not a color';
+		@warn "#{$color} is not a color";
 		@return $color;
 	}
 
@@ -96,7 +99,7 @@
 
 @function color-darken($color, $amount) {
 	@if type_of($color) != color {
-		@warn '#{$color} is not a color';
+		@warn "#{$color} is not a color";
 		@return $color;
 	}
 
@@ -105,15 +108,16 @@
 
 @function decimal-round($number, $digits: 0, $mode: round) {
 	@if type_of($number) != number {
-		@warn '#{$number} is not a number.';
+		@warn "#{$number} is not a number.";
 		@return $number;
 	}
 	@if type_of($digits) != number {
-		@warn '#{$digits} is not a number.';
+		@warn "#{$digits} is not a number.";
 		@return $number;
 	}
 
 	$n: 1;
+
 	@if $digits > 0 {
 		@for $i from 1 through $digits {
 			$n: $n * 10;
@@ -121,58 +125,58 @@
 	}
 
 	@if $mode == round {
-		@return round($number * $n) / $n;
+		@return math.div(math.round($number * $n), $n);
 	}
 	@if $mode == ceil {
-		@return ceil($number * $n) / $n;
+		@return math.div(math.ceil($number * $n), $n);
 	}
 	@if $mode == floor {
-		@return floor($number * $n) / $n;
+		@return math.div(math.floor($number * $n), $n);
 	}
 
-	@warn '#{$mode} is undefined keyword.';
+	@warn "#{$mode} is undefined keyword.";
 	@return $number;
 }
 
 @function relative-size($height, $font-size, $unit: none) {
-	$size: decimal-round(strip-unit($height) / (strip-unit($font-size) * strip-unit($size-base)), 4, ceil);
+	$size: decimal-round(math.div(strip-unit($height), (strip-unit($font-size) * strip-unit($size-base))), 4, ceil);
 
 	@if $unit == em {
 		@return $size * 1em;
-	}
-	@else if $unit == rem {
+	} @else if $unit == rem {
 		@return $size * 1rem;
-	}
-	@else if $unit == px {
+	} @else if $unit == px {
 		@return $size * 1px;
 	}
 
 	@return $size;
 }
 
-@function str-replace($string, $search, $replace: '') {
-	$index: str-index($string, $search);
+@function str-replace($string, $search, $replace: "") {
+	$index: string.index($string, $search);
 
+	/* stylelint-disable max-line-length */
 	@if $index {
-		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+		@return string.slice($string, 1, $index - 1) + $replace + str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
 	}
+	/* stylelint-enable max-line-length */
 
 	@return $string;
 }
 
 @function svg-uri($svg) {
-	$encoded: '';
+	$encoded: "";
 	$slice: 2000;
 	$index: 0;
-	$loops: ceil(str-length($svg) / $slice);
+	$loops: math.ceil(string.length($svg) / $slice);
 
 	@for $i from 1 through $loops {
-		$chunk: str-slice($svg, $index, $index + $slice - 1);
-		$chunk: str-replace($chunk, '"', "'");
-		$chunk: str-replace($chunk, '<', '%3C');
-		$chunk: str-replace($chunk, '>', '%3E');
-		$chunk: str-replace($chunk, '&', '%26');
-		$chunk: str-replace($chunk, '#', '%23');
+		$chunk: string.slice($svg, $index, $index + $slice - 1);
+		$chunk: str-replace($chunk, "\"", "'");
+		$chunk: str-replace($chunk, "<", "%3C");
+		$chunk: str-replace($chunk, ">", "%3E");
+		$chunk: str-replace($chunk, "&", "%26");
+		$chunk: str-replace($chunk, "#", "%23");
 		$encoded: #{$encoded}#{$chunk};
 		$index: $index + $slice;
 	}

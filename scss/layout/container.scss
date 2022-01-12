@@ -8,8 +8,8 @@ $container-offset: (2 * $gap) !default;
 
 	&.is-fluid {
 		max-width: none;
-		padding-left: $container-offset / 2;
-		padding-right: $container-offset / 2;
+		padding-left: calc(#{$container-offset} / 2);
+		padding-right: calc(#{$container-offset} / 2);
 		width: 100%;
 	}
 
